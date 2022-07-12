@@ -17,14 +17,12 @@ int Prompt(string message)
     double detA = -1 * k1 - -1 * k2;
     if (detA != 0)
     {
-        System.Console.WriteLine("test " + k1);
-        System.Console.WriteLine("det = " + detA);
         double x = (b1 - b2) / detA;
         double y = (-1 * k1 * b2 - -1 * k2 * b1) / detA;
         (double, double) res = (x, y);
         return res;
     }
-    else return (0,0);
+    else return (999,999);
 }
 
 int k1 = Prompt("k1= ");
@@ -32,4 +30,7 @@ int b1 = Prompt("b1= ");
 int k2 = Prompt("k2= ");
 int b2 = Prompt("b2= ");
 
-System.Console.WriteLine(Solve(k1, b1, k2, b2));
+(double, double) crossPoint = Solve(k1,b1,k2,b2);
+
+if (crossPoint == (999,999)) System.Console.WriteLine("Imposible Solve!!!");
+else System.Console.WriteLine("cross point A"+crossPoint);
